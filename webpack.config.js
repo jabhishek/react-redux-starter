@@ -1,4 +1,6 @@
 var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
@@ -15,5 +17,12 @@ module.exports = {
                 loader: 'babel'
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/index.tmpl.html',
+            inject: 'body',
+            filename: 'index.html'
+        })
+    ]
 };
