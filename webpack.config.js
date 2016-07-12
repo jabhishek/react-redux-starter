@@ -24,5 +24,6 @@ module.exports = {
             inject: 'body',
             filename: 'index.html'
         })
-    ]
+    ],
+    watch: true
 };
