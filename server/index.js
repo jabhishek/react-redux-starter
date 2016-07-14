@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require("body-parser");
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const defaultPort = 8000;
+const defaultPort = 3000;
 const port = isDeveloping ? defaultPort : (process.env.PORT || defaultPort);
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));

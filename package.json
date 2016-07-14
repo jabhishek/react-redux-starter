@@ -4,6 +4,7 @@
   "description": "React Redux starter",
   "main": "index.js",
   "scripts": {
+    "test": "./node_modules/.bin/karma start",
     "build": "./node_modules/.bin/webpack",
     "server": "node server/index.js",
     "start": "concurrent \"npm run build\" \"npm run server\""
@@ -33,6 +34,12 @@
     "concurrently": "^2.2.0",
     "express": "^4.14.0",
     "html-webpack-plugin": "^2.22.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.1.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.7.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
