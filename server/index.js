@@ -1,25 +1,26 @@
-/* eslint no-console: 0 */
-var path = require('path');
-var express = require('express');
-var bodyParser = require("body-parser");
+var express = require("express");
+var path = require("path");
+var bodyParser = require('body-parser');
+var serveStatic = require('serve-static');
 
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const defaultPort = 3000;
-const port = isDeveloping ? defaultPort : (process.env.PORT || defaultPort);
-const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+var port = process.env.PORT || 9000;
 
 var rootPath = path.normalize(__dirname + '/..');
-app.use(express.static(rootPath + '/dist'));
+var appPath = path.join(rootPath, 'dist');
 
-require('./routes')(app);
+var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+console.log(appPath);
+app.use(serveStatic(appPath));
+app.set("appPath", appPath);
 
-console.log(process.env.NODE_ENV);
+// setup routes
+require("./routes")(app);
 
-app.listen(port, function onStart(err) {
-    if (err) {
-        console.log(err);
-    }
+app.listen(port, function() {
+    console.log('Listening on port ' +  port + " in mode: " + process.env.NODE_ENV);
 });
 
+// Expose app
+module.exports = app;
