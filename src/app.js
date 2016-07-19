@@ -10,5 +10,5 @@ export default class App extends React.Component {
 	}
 }
 App.propTypes = {
-	children: React.PropTypes.array
+	children: React.PropTypes.object
 };
