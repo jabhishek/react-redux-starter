@@ -3,6 +3,7 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
 var kids = require('./api/kids/index');
+var trades = require('./api/trades/index');
 
 // Connection URL
 var url = require('./config/config').mongoUrl;
@@ -12,7 +13,9 @@ module.exports = function (app) {
         // Connection URL
         var db = yield MongoClient.connect(url);
 
-        app.use('/api', kids(db));
+        // api routes
+        app.use('/api/kids', kids(db));
+        app.use('/api/trades', trades(db));
 
         // All other routes should redirect to the index.html
         app.route('/*')

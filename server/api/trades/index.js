@@ -3,23 +3,24 @@ var co = require('co');
 
 module.exports = function (db) {
     // Get the collection
-    var col = db.collection('kids');
+    var trades = db.collection('trades');
 
     var router = express.Router();
     router.get('/', function (req, res) {
         co(function*() {
-            var docs = yield col.find().toArray();
+            var docs = yield trades.find().toArray();
             res.json({
-                'kids': docs
+                'trades': docs
             }).end()
         });
     });
 
     router.post('/', function (req, res) {
         co(function*() {
-            const response = yield db.collection('test').insertOne({user:req.body.user});
+            //const response = yield trades.insertOne({user:req.body.user});
+            console.log(req.body);
             res.json({
-                inserted: response.insertedCount
+                inserted: 0
             }).end();
         });
     });
