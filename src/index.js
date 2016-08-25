@@ -4,15 +4,22 @@ import {Router, browserHistory} from 'react-router';
 import {routes} from './routes';
 import reducers from './reducers/index';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware } from 'redux';
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
+import createLogger from 'redux-logger';
 
 const reducer = combineReducers({
 	...reducers,
 	routing: routerReducer
 });
+const logger = createLogger({
+	duration: true,
+	collapsed: true
+});
 
-const store = createStore(reducer);
+const store = createStore(reducer,
+	applyMiddleware(logger),
+	window.devToolsExtension ? window.devToolsExtension() : f => f);
 const history = syncHistoryWithStore(browserHistory, store);
 
 render((
