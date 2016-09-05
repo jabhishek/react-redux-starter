@@ -1,3 +1,4 @@
+import trades from './trades';
 import count from './count';
 
-export default { count };
+export default { trades, count };
