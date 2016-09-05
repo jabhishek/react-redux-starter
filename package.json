@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/karma start",
     "build": "./node_modules/.bin/webpack",
     "server": "nodemon server/index.js",
-    "start": "concurrent \"npm run build\" \"npm run server\""
+    "start": "concurrent \"npm run build\" \"npm run server\" \"npm run test\""
   },
   "repository": {
     "type": "git",
@@ -64,6 +64,7 @@
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
-    "serve-static": "^1.11.1"
+    "serve-static": "^1.11.1",
+    "superagent": "^2.2.0"
   }
 }
