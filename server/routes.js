@@ -1,3 +1,4 @@
+var doRequest = require('superagent');
 var MongoClient = require('mongodb').MongoClient,
     co = require('co'),
     assert = require('assert');
@@ -16,6 +17,22 @@ module.exports = function (app) {
         // api routes
         app.use('/api/kids', kids(db));
         app.use('/api/trades', trades(db));
+
+
+        app.get('/api/quote', function(request, response) {
+            if(request.query.symbol && request.query.symbol.length > 0) {
+                doRequest
+                    .get('https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/ajaxGetQuoteJSON.jsp?symbol=INFY')
+                    .set('Accept', 'application/json')
+                    .end(function(err, res){
+                        const d = JSON.parse(res.text);
+                        response.json(d);
+                    });
+
+            }
+        });
+
+
 
         // All other routes should redirect to the index.html
         app.route('/*')
