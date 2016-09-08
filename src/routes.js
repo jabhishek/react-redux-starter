@@ -7,7 +7,7 @@ import React from 'react';
 export const routes = (
 	<Route path="/" component={App}>{/**/}
 		<IndexRoute component={Home} />
-		<Route path="about" component={About}/>
-		<Route path="home" component={Home}/>
+		<Route path="/about" component={About}/>
+		<Route path="/home" component={Home}/>
 	</Route>
 );

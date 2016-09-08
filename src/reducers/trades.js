@@ -1,4 +1,4 @@
-export default function (state=[], action) {
+export default function(state = [], action) {
 	if (!action || !action.type) return state;
 
 	switch(action.type) {
@@ -15,7 +15,7 @@ export default function (state=[], action) {
 			if (!Array.isArray(action.payload)) {
 				return [ action.payload ];
 			}
-			return action.payload ;
+			return action.payload;
 		}
 		default:
 			return state;
