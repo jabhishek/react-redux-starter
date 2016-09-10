@@ -7,7 +7,7 @@ export default function(state = [], action) {
 				return state;
 			}
 			if (Array.isArray(action.payload)) {
-				return [ ...state, ...action.payload ]
+				return [ ...state, ...action.payload ];
 			}
 			return [ ...state, action.payload ];
 		}
