@@ -36,6 +36,13 @@ describe('tradesReducer', () => {
 
             expect(tradesReducer(initialTrades, { type: addTrade, payload: tradeToAdd })).toEqual(tradesAfter);
         })
+        it('should add to trades in state if array of trades passed', () => {
+            const initialTrades = [{ code: 'ABC', price: 100, quantity: 25 }];
+            const tradeToAdd = [{ code: 'XYZ', price: 100, quantity: 25 }];
+            const tradesAfter = [{ code: 'ABC', price: 100, quantity: 25 }, { code: 'XYZ', price: 100, quantity: 25 }];
+
+            expect(tradesReducer(initialTrades, { type: addTrade, payload: tradeToAdd })).toEqual(tradesAfter);
+        })
         it('should return default state if action has no payload', () => {
             const initialTrades = [{ code: 'ABC', price: 100, quantity: 25 }];
 

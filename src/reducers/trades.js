@@ -6,6 +6,9 @@ export default function(state = [], action) {
 			if (!action.payload) {
 				return state;
 			}
+			if (Array.isArray(action.payload)) {
+				return [ ...state, ...action.payload ]
+			}
 			return [ ...state, action.payload ];
 		}
 		case 'SET_TRADES': {
