@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Trades extends Component {
 	render() {
 		return (
-			<div className="trades">
+			<div className="trades-page">
 				{ this.props.trades.length }
 			</div>
 		);

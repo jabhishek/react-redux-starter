@@ -1,6 +1,6 @@
 import Home from './components/home';
 import About from './components/about';
-import Trades from './components/trades/trades';
+import Trades from './components/trades-page/trades-page';
 import {Route, IndexRoute} from 'react-router';
 import App from './app';
 import React from 'react';
