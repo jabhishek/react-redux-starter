@@ -5,7 +5,7 @@ class Trades extends Component {
 	render() {
 		return (
 			<div className="trades-page">
-				{ this.props.trades.length }
+				{ this.props.trades.length } Trades
 			</div>
 		);
 	}
