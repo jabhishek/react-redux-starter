@@ -1,4 +1,18 @@
-export default function(state = [], action) {
+
+const initialTrades = [
+	{
+		securityType: 'EQ',
+		exchange: 'NSE',
+		code: 'ATULAUTO',
+		name: 'Atul Auto',
+		quantity: 400,
+		trxType: 'buy',
+		brokerage: '10',
+		date: '2016/01/01'
+	}
+]
+
+export default function(state = initialTrades, action) {
 	if (!action || !action.type) return state;
 
 	switch(action.type) {

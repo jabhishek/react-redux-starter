@@ -24,24 +24,36 @@ module.exports = function (config) {
 
 
         webpack: {
+            devtool: 'inline-source-map',
             resolve: {
-                extensions: ["", ".js"]
+                extensions: ['', '.js', '.scss', '.json']
             },
             module: {
                 loaders: [
                     {
-                        test: /\.js$/, loader: "babel-loader", exclude: /node_modules/
-                    }/*,
+                        test: /\.js$/, loader: "babel-loader", exclude: /node_modules/, query: {
+                            presets: ['airbnb']
+                        }
+                    },
                     {
                         test: /\.less$/,
                         loader: 'style!css?modules&localIdentName=[local]!less'
-                    }*/
+                    },
+                    {
+                        test: /\.json$/, loader: 'json'
+                    }
                 ],
                 plugins: [
                     new webpack.DefinePlugin({
                         'process.env.BABEL_ENV': JSON.stringify('test')
                     })
                 ]
+            },
+            externals: {
+                'cheerio': 'window',
+                'react/addons': true,
+                'react/lib/ExecutionEnvironment': true,
+                'react/lib/ReactContext': true
             }
         },
 

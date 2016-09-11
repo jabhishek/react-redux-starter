@@ -28,6 +28,9 @@ module.exports = {
             }, {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract('style', 'css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]&sourceMap!less-loader?sourceMap')
+            },
+            {
+                test: /\.json$/, loader: 'json'
             }
         ]
     },
