@@ -10,7 +10,7 @@ const initialTrades = [
 		brokerage: '10',
 		date: '2016/01/01'
 	}
-]
+];
 
 export default function(state = initialTrades, action) {
 	if (!action || !action.type) return state;
