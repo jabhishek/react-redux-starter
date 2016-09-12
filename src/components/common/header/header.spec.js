@@ -9,11 +9,10 @@ describe('Header', () => {
 	});
 
 	it('contains a header text', () => {
-		console.log(wrapper.html());
 		expect(wrapper.find('h1').length).toEqual(1);
 	})
 
-	it('contains a header text', () => {
+	it('contains a header with text Portfolio Manager', () => {
 		expect(wrapper.find('h1').text()).toEqual('Portfolio Manager');
 	})
 });
