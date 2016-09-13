@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import TradesForm from '../trades-form/trades-form';
 import styles from './trades-page.less';
 
 class Trades extends Component {
 	render() {
 		return (
-			<div className={ styles["trades-page"] }>
+			<div className={ styles['trades-page'] }>
+				< TradesForm />
 				{ this.props.trades.length } Trades
 			</div>
 		);
