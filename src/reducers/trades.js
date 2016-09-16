@@ -1,6 +1,7 @@
 
 const initialTrades = [
 	{
+		portfolio: 'ABHI',
 		securityType: 'EQ',
 		exchange: 'NSE',
 		code: 'ATULAUTO',

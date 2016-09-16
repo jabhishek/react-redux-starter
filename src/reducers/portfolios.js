@@ -1,4 +1,4 @@
-export default function(state = [], action) {
+export default function(state = ['ABHI', 'KAMLA'], action) {
 	if (!action || !action.type) return state;
 
 	switch(action.type) {
