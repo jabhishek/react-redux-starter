@@ -1,7 +1,7 @@
 import Home from './components/home';
 import About from './components/about';
 import Trades from './components/trades-page/trades-page';
-import Portfolios from './components/portfolio/portfolios';
+import Portfolios from './components/portfolio/portfolio-connect';
 import {Route, IndexRoute} from 'react-router';
 import App from './app';
 import React from 'react';
