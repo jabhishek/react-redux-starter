@@ -1,6 +1,6 @@
 import portfolioReducer from './portfolios';
 
-describe('portfolio', () => {
+describe('portfolios reducer', () => {
 	it('should return default state if no action passed', () => {
 		expect(portfolioReducer([])).toEqual([]);
 	})

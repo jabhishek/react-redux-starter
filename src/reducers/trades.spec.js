@@ -1,6 +1,6 @@
 import tradesReducer from './trades';
 
-describe('tradesReducer', () => {
+describe('trades reducer', () => {
     it('should return default state if no action passed', () => {
         expect(tradesReducer([])).toEqual([]);
     })
