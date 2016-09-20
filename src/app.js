@@ -1,6 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from './components/common/header/header';
+import PageHeader from './components/common/page-header/page-header';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import './styles/index.less';
 
@@ -11,7 +11,7 @@ export default class App extends React.Component {
 		return (
 			<MuiThemeProvider>
 				<div>
-					<Header />
+					<PageHeader />
 					{this.props.children}
 				</div>
 			</MuiThemeProvider>

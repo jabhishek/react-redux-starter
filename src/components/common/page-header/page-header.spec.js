@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from './header';
+import PageHeader from './page-header';
 
-describe('Header', () => {
+describe('PageHeader', () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<Header />);
+		wrapper = shallow(<PageHeader />);
 	});
 
 	it('contains a header text', () => {
