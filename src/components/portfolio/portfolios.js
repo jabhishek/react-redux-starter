@@ -1,11 +1,17 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import Subheader from '../common/sub-header/sub-header';
+import PortfolioList from './portfolio-list/portfolio-list';
 
-const PortfolioPage = (portfolios) => {
+const PortfolioPage = ({portfolios}) => {
 	return (
 		<div className="container">
-			{ portfolios.length } portfolios
+			<Subheader headerText={ `${portfolios.length} portfolios` }></Subheader>
+			<PortfolioList portfolios={ portfolios}/>
 		</div>
 	);
+};
+PortfolioPage.propTypes = {
+	portfolios: React.PropTypes.array
 };
 export default PortfolioPage;
 
