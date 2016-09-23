@@ -1,4 +1,5 @@
 import portfolioReducer from './portfolios';
+import {ADD_PORTFOLIO} from '../constants';
 
 describe('portfolios reducer', () => {
 	it('should return default state if no action passed', () => {
@@ -10,8 +11,8 @@ describe('portfolios reducer', () => {
 
 	describe('Add portfolio', () => {
 		it('should add portfolio', () => {
-			expect(portfolioReducer([], { type: 'ADD_PORTFOLIO', payload: 'TEST' })).toEqual(['TEST']);
-			expect(portfolioReducer(['TEST'], { type: 'ADD_PORTFOLIO', payload: 'TEST1' })).toEqual(['TEST', 'TEST1']);
+			expect(portfolioReducer([], { type: ADD_PORTFOLIO, payload: 'TEST' })).toEqual(['TEST']);
+			expect(portfolioReducer(['TEST'], { type: ADD_PORTFOLIO, payload: 'TEST1' })).toEqual(['TEST', 'TEST1']);
 		})
 	})
 })

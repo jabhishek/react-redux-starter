@@ -1,3 +1,4 @@
+import {ADD_TRADE, SET_TRADES} from '../constants';
 
 const initialTrades = [
 	{
@@ -17,7 +18,7 @@ export default function(state = initialTrades, action) {
 	if (!action || !action.type) return state;
 
 	switch(action.type) {
-		case 'ADD_TRADE': {
+		case ADD_TRADE: {
 			if (!action.payload) {
 				return state;
 			}
@@ -26,7 +27,7 @@ export default function(state = initialTrades, action) {
 			}
 			return [ ...state, action.payload ];
 		}
-		case 'SET_TRADES': {
+		case SET_TRADES: {
 			if (!action.payload) {
 				return state;
 			}
