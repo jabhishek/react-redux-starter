@@ -27,7 +27,7 @@ module.exports = {
                 loader: 'babel'
             }, {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css-loader?modules&localIdentName=[local]--[hash:base64:5]&sourceMap!less-loader?sourceMap')
+                loader: ExtractTextPlugin.extract('style', 'css-loader?modules&camelCase&localIdentName=[local]--[hash:base64:5]&sourceMap!less-loader?sourceMap')
             },
             {
                 test: /\.json$/, loader: 'json'

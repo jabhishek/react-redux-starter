@@ -37,7 +37,7 @@ module.exports = function (config) {
                     },
                     {
                         test: /\.less$/,
-                        loader: 'style!css?modules&localIdentName=[local]!less'
+                        loader: 'style!css?modules&camelCase&localIdentName=[local]!less'
                     },
                     {
                         test: /\.json$/, loader: 'json'
