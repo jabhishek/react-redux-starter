@@ -5,7 +5,7 @@ import PortfolioList from './portfolio-list/portfolio-list';
 const PortfolioPage = ({portfolios}) => {
 	return (
 		<div className="container">
-			<Subheader headerText={ `${portfolios.length} portfolios` }></Subheader>
+			<Subheader headerText="Manage Portfolios"></Subheader>
 			<PortfolioList portfolios={ portfolios}/>
 		</div>
 	);

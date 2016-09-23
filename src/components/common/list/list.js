@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './list.less';
 
 const List = ({ children, className }) => {
-	const headerClass = classnames(styles['list'], className ? className : '');
+	const headerClass = classnames(styles.list, className ? className : '');
 	return (
 		<ul className={ headerClass }>
 			{ children }
@@ -11,6 +11,7 @@ const List = ({ children, className }) => {
 	);
 };
 List.propTypes = {
-	children: PropTypes.array
+	children: PropTypes.array,
+	className: PropTypes.string
 };
 export default List;

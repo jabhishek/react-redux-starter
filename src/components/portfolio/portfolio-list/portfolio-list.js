@@ -1,4 +1,5 @@
 import React from 'react';
+import List from '../../common/list/list';
 
 const PortfolioList = ({ portfolios }) => {
 	const items = [];
@@ -7,9 +8,9 @@ const PortfolioList = ({ portfolios }) => {
 	});
 
 	return (
-		<ul>
+		<List>
 			{ items }
-		</ul>
+		</List>
 	);
 };
 PortfolioList.propTypes = {
