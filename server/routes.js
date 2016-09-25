@@ -5,6 +5,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 var kids = require('./api/kids/index');
 var trades = require('./api/trades/index');
+var portfolios = require('./api/portfolios/index');
 
 // Connection URL
 var url = require('./config/config').mongoUrl;
@@ -17,6 +18,7 @@ module.exports = function (app) {
         // api routes
         app.use('/api/kids', kids(db));
         app.use('/api/trades', trades(db));
+        app.use('/api/portfolios', portfolios(db));
 
 
         app.get('/api/quote', function(request, response) {
