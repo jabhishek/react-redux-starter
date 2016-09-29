@@ -1,16 +1,22 @@
-import {ADD_PORTFOLIO} from '../constants';
+import {ADD_PORTFOLIO, SET_PORTFOLIOS} from '../constants';
 export default function(state = ['ABHI', 'KAMLA'], action) {
 	if (!action || !action.type) return state;
-
+	if (!action.payload) {
+		return state;
+	}
 	switch(action.type) {
 		case ADD_PORTFOLIO: {
-			if (!action.payload) {
-				return state;
-			}
 			if (Array.isArray(action.payload)) {
 				return [ ...state, ...action.payload ];
 			}
 			return [ ...state, action.payload ];
+		}
+		case SET_PORTFOLIOS: {
+			const portfolios = action.payload.portfolios;
+			if (!portfolios || !Array.isArray(portfolios)) {
+				return state;
+			}
+			return portfolios;
 		}
 		default:
 			return state;
