@@ -1,11 +1,14 @@
 import React from 'react';
 import Subheader from '../common/sub-header/sub-header';
 import PortfolioList from './portfolio-list/portfolio-list';
+import AddPortfolio from './add-portfolio/add-portfolio';
 
 const PortfolioPage = ({portfolios}) => {
 	return (
 		<div className="container">
-			<Subheader headerText="Manage Portfolios"></Subheader>
+			<AddPortfolio />
+			<div className="separator"></div>
+			<Subheader headerText="All Portfolios"></Subheader>
 			<PortfolioList portfolios={ portfolios}/>
 		</div>
 	);
