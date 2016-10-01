@@ -5,7 +5,7 @@ import PortfolioPage from './portfolios';
 describe('Portfolios', () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<PortfolioPage portfolios={[]}/>);
+		wrapper = shallow(<PortfolioPage portfolios={[]} portfolioActions={{ getPortfolios: () => { }}}/>);
 	});
 
 	it('should exist', () => {

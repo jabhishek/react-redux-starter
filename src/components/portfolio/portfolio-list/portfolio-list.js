@@ -5,7 +5,7 @@ import ListItem from '../../common/list-item/list-item';
 const PortfolioList = ({ portfolios }) => {
 	const items = [];
 	portfolios.forEach(p => {
-		items.push(<ListItem key={ p }>{ p }</ListItem>);
+		items.push(<ListItem key={ p._id }>{ p.portfolio }</ListItem>);
 	});
 
 	return (
