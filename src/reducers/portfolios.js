@@ -1,5 +1,8 @@
 import {ADD_PORTFOLIO, SET_PORTFOLIOS} from '../constants';
-export default function(state = ['ABHI', 'KAMLA'], action) {
+
+export const initialPortfolios = [ {_id: 1, portfolio: 'ABHI'} ];
+
+export default function(state = initialPortfolios, action) {
 	if (!action || !action.type) return state;
 	if (!action.payload) {
 		return state;
