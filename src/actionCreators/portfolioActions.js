@@ -1,4 +1,5 @@
 import { SET_PORTFOLIOS } from '../constants';
+import request from 'superagent';
 
 export const fetchPortfoliosSuccess = (portfolios) => {
 	return {
@@ -11,11 +12,18 @@ export const fetchPortfoliosSuccess = (portfolios) => {
 
 export const getPortfolios = () => {
 	return dispatch => {
-		return fetch('/api/portfolios')
-			.then(res => res.json())
-			.then(json => {
-				dispatch(fetchPortfoliosSuccess(json.portfolios));
-			})
-			.catch(() => {});
+
+		return request
+			.get('/api/portfolios/')
+			.accept('application/json')
+			.end((err, res) => {
+				if (err) {
+				//	dispatch(loginUserFailure(errorMessages));
+				} else {
+					const response = JSON.parse(res.text);
+					dispatch(fetchPortfoliosSuccess(response.portfolios));
+				}
+			});
+
 	};
 };
