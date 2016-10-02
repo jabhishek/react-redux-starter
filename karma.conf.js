@@ -54,7 +54,10 @@ module.exports = function (config) {
                 'react/addons': true,
                 'react/lib/ExecutionEnvironment': true,
                 'react/lib/ReactContext': true
-            }
+            },
+			node: {
+				fs: "empty"
+			}
         },
 
 
@@ -106,7 +109,7 @@ module.exports = function (config) {
         // if true, it capture browsers, run tests and exit
         singleRun: false,
 
-
+        crossOriginAttribute: false,
         // List plugins explicitly, since autoloading karma-webpack
         // won't work here
         plugins: [
