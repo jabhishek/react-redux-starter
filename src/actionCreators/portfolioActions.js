@@ -20,36 +20,40 @@ export const addPortfolioSuccess = (portfolio) => {
 export const getPortfolios = () => {
 	return dispatch => {
 
-		return request
-			.get('/api/portfolios/')
-			.accept('application/json')
-			.end((err, res) => {
-				if (err) {
-					console.log(err);
-				} else {
-					const response = JSON.parse(res.text);
-					dispatch(fetchPortfoliosSuccess(response.portfolios));
-				}
-			});
-
+		return new Promise((resolve, reject) => {
+			request
+				.get('/api/portfolios/')
+				.accept('application/json')
+				.end((err, res) => {
+					if (err) {
+						reject(err);
+					} else {
+						const response = JSON.parse(res.text);
+						dispatch(fetchPortfoliosSuccess(response.portfolios));
+						resolve(response.portfolios);
+					}
+				});
+		});
 	};
 };
 
 export const addPortfolio = (portfolio) => {
 	return dispatch => {
 
-		return request
-			.post('/api/portfolios/')
-			.accept('application/json')
-			.send({ portfolio: portfolio })
-			.end((err, res) => {
-				if (err) {
-				//	dispatch(loginUserFailure(errorMessages));
-				} else {
-					const { _id } = JSON.parse(res.text);
-					dispatch(addPortfolioSuccess({_id, portfolio}));
-				}
-			});
-
+		return new Promise((resolve, reject) => {
+			request
+				.post('/api/portfolios/')
+				.accept('application/json')
+				.send({ portfolio: portfolio })
+				.end((err, res) => {
+					if (err) {
+						//	dispatch(loginUserFailure(errorMessages));
+					} else {
+						const { _id } = JSON.parse(res.text);
+						dispatch(addPortfolioSuccess({_id, portfolio}));
+						resolve();
+					}
+				});
+		});
 	};
 };
