@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Subheader from '../../common/sub-header/sub-header';
 import TextField from 'material-ui/TextField';
 import styles from './add-portfolio.less';
@@ -12,7 +12,7 @@ export default class AddPortfolio extends Component {
     }
 
     addPortfolio(e) {
-        console.log('Portfolio added');
+        this.props.addPortfolio(this.state.portfolio);
         e.preventDefault();
     }
 
@@ -35,3 +35,6 @@ export default class AddPortfolio extends Component {
         );
     }
 }
+AddPortfolio.propTypes = {
+    addPortfolio: PropTypes.func
+};

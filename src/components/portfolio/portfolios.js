@@ -1,7 +1,7 @@
 import React from 'react';
 import Subheader from '../common/sub-header/sub-header';
 import PortfolioList from './portfolio-list/portfolio-list';
-import AddPortfolio from './add-portfolio/add-portfolio';
+import AddPortfolio from './add-portfolio/add-portfolio-connect';
 
 export default class PortfolioPage extends React.Component {
 	componentWillMount() {

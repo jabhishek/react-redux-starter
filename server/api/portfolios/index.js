@@ -17,17 +17,17 @@ module.exports = function (db) {
 
 	router.post('/', function (req, res) {
 		co(function*() {
-			console.log(req.body.portfolio);
 			const response = yield portfolios.insertOne({portfolio:req.body.portfolio});
-			console.log(response.result);
 			res.json({
-				inserted: 0
+				_id: response.insertedId,
+				inserted: response.insertedCount
 			}).end();
 		}).catch(function(err) {
-			console.log(err);
 			res.status(400)
 				.json({
-				error: err
+				error: {
+					message: err.message
+				}
 			});
 		});
 	});
