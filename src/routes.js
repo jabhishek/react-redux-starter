@@ -1,4 +1,4 @@
-import Trades from './components/trades-page/trades-page';
+import Trades from './components/trades-page/trades-page-connect';
 import Portfolios from './components/portfolio/portfolio-connect';
 import {Route, IndexRoute} from 'react-router';
 import App from './app';

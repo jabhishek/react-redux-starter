@@ -8,6 +8,7 @@
     "globals": {
         "expect": true,
         "sinon": true,
+        "Promise": true,
         "__DEV__": true
     },
     "ecmaFeatures": {
