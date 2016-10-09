@@ -1,6 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PortfolioPage from './portfolios';
+import PortfolioPageInj from 'inject!./portfolios';
+
+class AddPortfolio extends React.Component {
+	render() {
+		return (
+			<div>Test</div>
+		)
+	}
+}
+
+const PortfolioPage = PortfolioPageInj({
+	'./add-portfolio/add-portfolio-connect': AddPortfolio
+}).default;
 
 describe('Portfolios', () => {
 	let wrapper, callParams;
@@ -14,6 +26,7 @@ describe('Portfolios', () => {
 				getPortfolios: (...args) => {
 					callCount++;
 					callParams = args;
+					return Promise.resolve();
 				}
 			}
 		};
