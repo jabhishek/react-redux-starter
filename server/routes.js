@@ -24,7 +24,7 @@ module.exports = function (app) {
         app.get('/api/quote', function(request, response) {
             if(request.query.symbol && request.query.symbol.length > 0) {
                 doRequest
-                    .get('https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/ajaxGetQuoteJSON.jsp?symbol=INFY')
+                    .get(`https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/ajaxGetQuoteJSON.jsp?symbol=${request.query.symbol}`)
                     .set('Accept', 'application/json')
                     .end(function(err, res){
                         const d = JSON.parse(res.text);
