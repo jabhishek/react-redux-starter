@@ -4,8 +4,17 @@
   height: @height;
   padding: 0 10px;
   background: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 
   h1 {
     line-height: @height;
   }
+}
+
+.loginButton {
+  line-height: @height;
+  cursor: pointer;
+  composes: anchor from 'less!../../../styles/common/rules.less';
 }

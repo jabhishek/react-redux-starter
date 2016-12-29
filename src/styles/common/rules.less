@@ -1,3 +1,13 @@
+@import '../variables.less';
+
 :local(.container) {
   padding: 10px;
+}
+
+.anchor {
+  color: @anchor-blue;
+
+  &:hover {
+    color: darken(@anchor-blue, 10%);
+  }
 }
