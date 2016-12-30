@@ -22,7 +22,7 @@ export default class Header extends Component {
 		return (
 			<div className={ styles.header }>
 				<h1>Portfolio Manager</h1>
-				<a className={ styles.loginButton } onClick={ this.login.bind(this) }>Login with Google</a>
+				<a href="/auth/google" className={ styles.loginButton }>Login with Google</a>
 			</div>
 		);
 	}

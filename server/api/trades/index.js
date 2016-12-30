@@ -18,7 +18,6 @@ module.exports = function (db) {
     router.post('/', function (req, res) {
         co(function*() {
             //const response = yield trades.insertOne({user:req.body.user});
-            console.log(req.body);
             res.json({
                 inserted: 0
             }).end();

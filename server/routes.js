@@ -1,4 +1,5 @@
 var doRequest = require('superagent');
+var passport = require('passport');
 var MongoClient = require('mongodb').MongoClient,
     co = require('co'),
     assert = require('assert');
@@ -34,9 +35,18 @@ module.exports = function (app) {
             }
         });
 
+		app.get('/auth/google',
+			passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
 
-        // All other routes should redirect to the index.html
+		app.get('/auth/google/callback',
+			passport.authenticate('google', { failureRedirect: '/login' }),
+			function(req, res) {
+				res.redirect('/portfolios');
+			});
+
+
+		// All other routes should redirect to the index.html
         app.route('/*')
             .get(function (req, res) {
                 res.sendFile(app.get('appPath') + '/index.html');

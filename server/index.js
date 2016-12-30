@@ -1,6 +1,8 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
 var serveStatic = require('serve-static');
 
 var port = process.env.PORT || 9000;
@@ -14,6 +16,11 @@ app.use(bodyParser.json());
 console.log(appPath);
 app.use(serveStatic(appPath));
 app.set("appPath", appPath);
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./passportInit');
 
 // setup routes
 require("./routes")(app);
