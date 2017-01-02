@@ -1,5 +1,5 @@
 var doRequest = require('superagent');
-var passport = require('passport');
+
 var MongoClient = require('mongodb').MongoClient,
     co = require('co'),
     assert = require('assert');
@@ -21,6 +21,7 @@ module.exports = function (app) {
         app.use('/api/trades', trades(db));
         app.use('/api/portfolios', portfolios(db));
 
+        app.use('/auth', require('./api/auth')());
 
         app.get('/api/quote', function(request, response) {
             if(request.query.symbol && request.query.symbol.length > 0) {
@@ -34,16 +35,6 @@ module.exports = function (app) {
 
             }
         });
-
-		app.get('/auth/google',
-			passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
-
-
-		app.get('/auth/google/callback',
-			passport.authenticate('google', { failureRedirect: '/login' }),
-			function(req, res) {
-				res.redirect('/portfolios');
-			});
 
 
 		// All other routes should redirect to the index.html
