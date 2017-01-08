@@ -1,6 +1,7 @@
-var express = require('express');
-var passport = require('passport');
-var session = require('express-session');
+const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
+const auth = require('./auth.service');
 
 module.exports = function () {
 	var router = express.Router();
@@ -9,7 +10,8 @@ module.exports = function () {
 	router.get('/google/callback',
 		passport.authenticate('google', { failureRedirect: '/login' }),
 		function(req, res) {
-			res.redirect('/login-redirect');
+			const token = auth.signToken(req.user.id);
+			res.redirect(`/login-redirect?token=${token}`);
 		});
 
 	return router;

@@ -1,14 +1,24 @@
+const jwt = require('jsonwebtoken');
+const config = require('../../config/config');
+const expressJwt = require('express-jwt');
+const validateJwt = expressJwt({ secret: config.secrets.session });
 
 const authenticate = function (req, res, next) {
-	if (req.isAuthenticated()) {
-		console.log('is authenticated', req.user._json);
-		next();
-	} else {
-		console.log('not authenticated - redirect to login', res);
-		res.status(401).send({ message: 'Unauthenticated'});
-	}
+	validateJwt(req, res, function() {
+		if (!req.user) {
+			res.status(401).send({
+				message: 'Error!! Unauthorized.'
+			});
+		} else {
+			next();
+		}
+	});
 };
 
+const signToken = (id) => {
+	return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 60 * 60 });
+}
+
 module.exports = {
-	authenticate
+	authenticate, signToken
 };

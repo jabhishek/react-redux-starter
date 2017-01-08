@@ -16,9 +16,7 @@ app.use(bodyParser.json());
 console.log(appPath);
 app.use(serveStatic(appPath));
 app.set("appPath", appPath);
-app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
-app.use(passport.session());
 
 require('./passportInit');
 

@@ -1,5 +1,6 @@
 import { SET_PORTFOLIOS, ADD_PORTFOLIO } from '../constants';
 import request from 'superagent';
+import storage from '../utils/localStore';
 
 export const fetchPortfoliosSuccess = (portfolios) => {
 	return {
@@ -19,14 +20,16 @@ export const addPortfolioSuccess = (portfolio) => {
 
 export const getPortfolios = () => {
 	return dispatch => {
-
+		const token = storage.get();
 		return new Promise((resolve, reject) => {
 			request
 				.get('/api/portfolios/')
 				.accept('application/json')
+				.set('Authorization', `Bearer ${token}`)
 				.end((err, res) => {
 					if (err) {
-						reject(err);
+						console.log('Unauthorized');
+						// reject(err);
 					} else {
 						const response = JSON.parse(res.text);
 						dispatch(fetchPortfoliosSuccess(response.portfolios));
