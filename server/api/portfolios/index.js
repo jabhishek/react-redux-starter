@@ -8,6 +8,7 @@ module.exports = function (db) {
 	var portfolios = db.collection('portfolios');
 
 	var router = express.Router();
+
 	router.get('/', authService.authenticate, function (req, res) {
 		co(function*() {
 			var docs = yield portfolios.find().toArray();
@@ -17,7 +18,7 @@ module.exports = function (db) {
 		});
 	});
 
-	router.post('/', function (req, res) {
+	router.post('/', authService.authenticate, function (req, res) {
 		co(function*() {
 			const response = yield portfolios.insertOne({portfolio:req.body.portfolio});
 			res.json({

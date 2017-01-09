@@ -4,7 +4,6 @@ var MongoClient = require('mongodb').MongoClient,
     co = require('co'),
     assert = require('assert');
 
-var kids = require('./api/kids/index');
 var trades = require('./api/trades/index');
 var portfolios = require('./api/portfolios/index');
 
@@ -17,11 +16,10 @@ module.exports = function (app) {
         var db = yield MongoClient.connect(url);
 
         // api routes
-        app.use('/api/kids', kids(db));
         app.use('/api/trades', trades(db));
         app.use('/api/portfolios', portfolios(db));
 
-        app.use('/auth', require('./api/auth')());
+        app.use('/auth', require('./api/auth')(db));
 
         app.get('/api/quote', function(request, response) {
             if(request.query.symbol && request.query.symbol.length > 0) {

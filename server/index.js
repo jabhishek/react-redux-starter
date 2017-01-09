@@ -18,7 +18,6 @@ app.use(serveStatic(appPath));
 app.set("appPath", appPath);
 app.use(passport.initialize());
 
-require('./passportInit');
 
 // setup routes
 require("./routes")(app);

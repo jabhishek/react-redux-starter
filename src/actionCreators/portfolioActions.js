@@ -42,12 +42,13 @@ export const getPortfolios = () => {
 
 export const addPortfolio = (portfolio) => {
 	return dispatch => {
-
+		const token = storage.get();
 		return new Promise((resolve, reject) => {
 			request
 				.post('/api/portfolios/')
 				.accept('application/json')
 				.send({ portfolio: portfolio })
+				.set('Authorization', `Bearer ${token}`)
 				.end((err, res) => {
 					if (err) {
 						//	dispatch(loginUserFailure(errorMessages));
