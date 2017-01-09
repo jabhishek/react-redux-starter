@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
 import styles from './page-header.less';
-import request from 'superagent';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
-	login() {
-		request
-			.get('/auth/google')
-			.accept('application/json')
-			.end((err, res) => {
-				if (err) {
-					// reject(err);
-				} else {
-					const response = JSON.parse(res.text);
-					console.log(response);
-					//dispatch(fetchPortfoliosSuccess(response.portfolios));
-					//resolve(response.portfolios);
-				}
-			});
-	}
+class Header extends Component {
 	render() {
 		return (
 			<div className={ styles.header }>
@@ -27,3 +12,15 @@ export default class Header extends Component {
 		);
 	}
 }
+Header.propTypes = {
+	authActions: React.PropTypes.object
+};
+
+const mapDispatchToProps = () => {
+	return { };
+};
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(Header);

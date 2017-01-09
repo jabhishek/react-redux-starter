@@ -4,8 +4,8 @@ import {Router, browserHistory} from 'react-router';
 import {routes} from './routes';
 import reducers from './reducers/index';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware } from 'redux';
-import {syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux';
+import {createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import {syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 
@@ -24,9 +24,11 @@ const middleware = applyMiddleware(
 	routerMiddleware(browserHistory)
 );
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
 	reducer,
-	middleware);
+	composeEnhancers(middleware));
 
 const history = syncHistoryWithStore(browserHistory, store);
 

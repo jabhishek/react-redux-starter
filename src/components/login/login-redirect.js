@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import storage from '../../utils/localStore';
 import {push as pushPath} from 'react-router-redux';
+import * as authActions from '../../actionCreators/authActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 class LoginRedirect extends Component {
 	componentWillMount() {
-		storage.set(this.props.location.query.token);
+		const token = this.props.location.query.token;
+		storage.set(token);
+
+		// abhi-todo - fetch and save user in addition to token
+		this.props.authActions.saveUser({ token: token });
 		this.props.pushPath('/portfolios');
 	}
 
@@ -20,13 +25,15 @@ class LoginRedirect extends Component {
 }
 LoginRedirect.propTypes = {
 	location: React.PropTypes.object,
-	pushPath: React.PropTypes.func
+	pushPath: React.PropTypes.func,
+	authActions: React.PropTypes.object
 };
 
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		pushPath: bindActionCreators(pushPath, dispatch)
+		pushPath: bindActionCreators(pushPath, dispatch),
+		authActions: bindActionCreators(authActions, dispatch)
 	};
 };
 
