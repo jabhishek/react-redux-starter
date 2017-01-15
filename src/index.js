@@ -8,6 +8,7 @@ import {createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import {syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
+import {getLoggedInUser, saveUser, logoutUser} from './actionCreators/authActions';
 
 
 const reducer = combineReducers({
@@ -32,10 +33,21 @@ const store = createStore(
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-render((
-	<Provider store={store}>
-		<Router history={history}>
-			{ routes }
-		</Router>
-	</Provider>
-), document.getElementById('root'));
+function renderApp() {
+	render((
+		<Provider store={store}>
+			<Router history={history}>
+				{ routes }
+			</Router>
+		</Provider>
+	), document.getElementById('root'));
+}
+
+
+getLoggedInUser().then((user) => {
+	store.dispatch(saveUser(user));
+	renderApp();
+}).catch(err => {
+	store.dispatch(logoutUser());
+	renderApp();
+});

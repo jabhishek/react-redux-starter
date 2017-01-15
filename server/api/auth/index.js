@@ -15,7 +15,7 @@ module.exports = function (db) {
 		function(req, res) {
 			co(function*() {
 				const usersCol = db.collection('users');
-				const user = yield usersCol.findOne({ googleId: req.user.id });
+				const user = yield usersCol.findOne({ username: req.user.id });
 
 				if(!user) {
 					yield usersCol.insertOne({

@@ -1,6 +1,5 @@
 var express = require('express');
 var co = require('co');
-var passport = require('passport');
 const authService = require('../auth/auth.service')
 
 module.exports = function (db) {

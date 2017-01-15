@@ -4,8 +4,9 @@ var MongoClient = require('mongodb').MongoClient,
     co = require('co'),
     assert = require('assert');
 
-var trades = require('./api/trades/index');
-var portfolios = require('./api/portfolios/index');
+var trades = require('./api/trades');
+var portfolios = require('./api/portfolios');
+var users = require('./api/user');
 
 // Connection URL
 var url = require('./config/config').mongoUrl;
@@ -13,11 +14,12 @@ var url = require('./config/config').mongoUrl;
 module.exports = function (app) {
     co(function*() {
         // Connection URL
-        var db = yield MongoClient.connect(url);
+        const db = yield MongoClient.connect(url);
 
         // api routes
         app.use('/api/trades', trades(db));
         app.use('/api/portfolios', portfolios(db));
+        app.use('/api/user', users(db));
 
         app.use('/auth', require('./api/auth')(db));
 

@@ -16,7 +16,7 @@ const authenticate = function (req, res, next) {
 };
 
 const signToken = (id) => {
-	return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 60 * 60 });
+	return jwt.sign({ id: id }, config.secrets.session, { expiresIn: 60 * 60 });
 }
 
 module.exports = {
