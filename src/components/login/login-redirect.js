@@ -10,8 +10,9 @@ class LoginRedirect extends Component {
 		const token = this.props.location.query.token;
 		storage.set(token);
 
-		// abhi-todo - fetch and save user in addition to token
-		this.props.authActions.saveUser({ token: token });
+		authActions.getLoggedInUser().then((user) => {
+			this.props.authActions.saveUser(user);
+		});
 		this.props.pushPath('/portfolios');
 	}
 
