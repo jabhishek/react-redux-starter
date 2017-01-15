@@ -7,7 +7,6 @@ class Header extends Component {
 		return (
 			<div className={ styles.header }>
 				<h1>Portfolio Manager</h1>
-				<a href="/auth/google" className={ styles.loginButton }>Login with Google</a>
 			</div>
 		);
 	}

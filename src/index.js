@@ -9,7 +9,7 @@ import {syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rout
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import {getLoggedInUser, saveUser, logoutUser} from './actionCreators/authActions';
-
+import {push} from 'react-router-redux';
 
 const reducer = combineReducers({
 	...reducers,
@@ -47,7 +47,12 @@ function renderApp() {
 getLoggedInUser().then((user) => {
 	store.dispatch(saveUser(user));
 	renderApp();
-}).catch(err => {
-	store.dispatch(logoutUser());
+}).catch(() => {
+	const path = store.getState().routing.locationBeforeTransitions.pathname;
+
+	if (path !== '/login-redirect') {
+		store.dispatch(logoutUser());
+		store.dispatch(push('login'));
+	}
 	renderApp();
 });
